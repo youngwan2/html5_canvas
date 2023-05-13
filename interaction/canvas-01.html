@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interaction</title>
+    <style>
+        .canvas{
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+    <h1>Interaction</h1>
+    <canvas width="600" height="400" class="canvas"></canvas>
+
+    <script>
+        const canvas = document.querySelector('.canvas')
+        const context = canvas.getContext('2d')
+
+        context.fillRect(200,200,100,100)
+
+        function clickHandler(e){
+            console.log(e.pageX, e.pageY)
+
+        }
+
+        canvas.addEventListener('click',(e)=>{
+            clickHandler(e)
+        })
+
+    </script>
+</body>
+</html>

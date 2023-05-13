@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .canvas{
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <canvas class="canvas" width="600" height="400">
+        이 브라우저는 캔버스를 지원하지 않습니다.
+    </canvas>
+
+
+    <script>
+        const canvas = document.querySelector('.canvas')
+        const context = canvas.getContext('2d');
+
+
+        context.fillRect(100,100,200,200) // 도형을 그린다.
+        context.fillStyle ='orange' //오렌지 물감을 찍고
+        context.fillRect(150,150,200,200) // 도형을 그린다.
+
+        /* save() : canvas의 모든 상태를 저장한다. */
+        context.save(); // 오렌지 색을 저장 
+       
+        context.fillStyle =' blue' // 파란색 물감을 찍고
+        context.beginPath() ; // 선을 그리겠다고 선언하고,
+        context.arc(300,300,50,0,Math.PI/180*360,false) // 원을 그린 후
+        context.fill() //  그 원을 파란색으로 채운다.
+
+        /* restore() : 가장 최근에 저장된 canvas 상태를 복원한다. */
+        context.restore(); // 저장한 오렌지 색을 가져왔다.
+
+        context.beginPath();
+        context.arc(300,300,20,0,Math.PI/180*360,false) // 원을 그린다.
+        context.fill() // 저장소에서 가져온 오렌지 색으로 원을 채운다.
+          
+        
+               /* sava() 를 하면 특정 스텍에 canvas 상태 정보가 쌓인다.
+                그 후 restore() 를 사용하면, 최근에 쌓인 것 부터 꺼내어 다음 효과에 적용된다.
+               */
+        
+        
+    </script>
+</body>
+</html>

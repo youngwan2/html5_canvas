@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>setTransform, translate, scale</title>
+    <style>
+      .canvas {
+        background-color: gray;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas class="canvas" width="800" height="800">
+      이 브라우저는 캔버스를 지원하지 않습니다.
+    </canvas>
+
+    <script>
+      const canvas = document.querySelector(".canvas");
+      const context = canvas.getContext("2d");
+      let scaleVal =20;
+
+      function draw() {
+        // context.save()
+        context.setTransform(1, 0, 0, 1, 0, 0);
+        context.translate(350, 350);
+        
+        context.scale(scaleVal, scaleVal);
+        scaleVal-= 0.1;
+               
+        context.strokeRect(-50, -50, 100, 100);
+        // context.restore();
+        
+
+        
+
+        requestAnimationFrame(draw)
+      }
+      draw()
+    </script>
+  </body>
+</html>
