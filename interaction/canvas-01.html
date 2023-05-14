@@ -1,36 +1,70 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Interaction</title>
     <style>
-        .canvas{
-            background-color: #eee;
-        }
+      * {
+        margin: 0;
+      }
+      .canvas {
+        background-color: #eee;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Interaction</h1>
     <canvas width="600" height="400" class="canvas"></canvas>
 
     <script>
-        const canvas = document.querySelector('.canvas')
-        const context = canvas.getContext('2d')
+      const canvas = document.querySelector(".canvas");
+      const context = canvas.getContext("2d");
 
-        context.fillRect(200,200,100,100)
+      context.fillRect(200, 200, 100, 100);
 
-        function clickHandler(e){
-            console.log(e.pageX, e.pageY)
+      /* layerX, layerY 는 문서 위에 레이어층이 있으면 해당 레이어를 기준으로 x,y축을 계산한다. */
+      function clickHandler(e) {
+        const x = e.pageX - canvas.offsetLeft;
+        const y = e.pageY - canvas.offsetTop;
+        // https://www.youtube.com/watch?v=hBTwJGZIrSo 17:48초
 
+        if (x > 200 && x < 300 && y > 200 && y < 300) {
+          console.log(x);
         }
+      }
 
-        canvas.addEventListener('click',(e)=>{
-            clickHandler(e)
-        })
-
+      canvas.addEventListener("click", (e) => {
+        clickHandler(e);
+      });
     </script>
-</body>
+    <br><br>
+    <h2>소스코드</h2>
+    
+    <pre> <p> 
+
+      const canvas = document.querySelector(".canvas");
+      const context = canvas.getContext("2d");
+
+      context.fillRect(200, 200, 100, 100);
+
+      /* layerX, layerY 는 문서 위에 레이어층이 있으면 해당 레이어를 기준으로 x,y축을 계산한다. */
+      function clickHandler(e) {
+        const x = e.pageX - canvas.offsetLeft;
+        const y = e.pageY - canvas.offsetTop;
+     // https://www.youtube.com/watch?v=hBTwJGZIrSo 17:48초
+    
+        if(x>200 && x<300 && y>200 && y<300){
+            console.log(x)
+        }
+    }
+
+      canvas.addEventListener("click", (e) => {
+        clickHandler(e);
+      });
+    </p>
+
+    </pre>
+  </body>
 </html>
