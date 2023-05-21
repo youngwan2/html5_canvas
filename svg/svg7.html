@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7. 기본 직선 그리기</title>
+    <style>
+      .svg {
+        background-color: gray;
+      }
+
+      rect {
+        fill: azure;
+        stroke: lawngreen; /* 선 색 */
+        stroke-width: 10px; /* 선 넓이 */
+      }
+
+      circle {
+        fill: aqua;
+        stroke: goldenrod;
+        stroke-width: 10;
+      }
+    </style>
+  </head>
+
+  <body>
+    <svg class="svg" width="500" height="500">
+      <!-- 1. line 직선 -  x1,y1 : 시작위치  / x2, y2 : 종료 위치 -->
+      <line x1="10" y1="50" x2="30" y2="300" stroke="blue" stroke-width="10" />
+    
+      <!-- 2. polyline 굴곡되는 직선(직선으로 이으면 면적을 디폴트 색으로 채워줌)  -->
+      <!-- points ="x1 y1, x2 y2, x3, y3, ... " -->
+      <polyline points="10 10, 50 10, 50 50, 10 50" stroke="green" />
+
+      <!-- 3. polygon 굴곡되는 직선(직선으로 잇지 못한 부분을 알아서 이어줌) -->
+      <polygon points="60 10, 100 10, 100, 50, 60,50" stroke="green"/>
+    
+    
+    </svg>
+  </body>
+</html>
