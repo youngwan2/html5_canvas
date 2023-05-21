@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4. svg 에 css 추가하기</title>
+    <style>
+      .eye{
+        fill: brown;
+        animation: bounce 1s infinite alternate;
+        
+      }
+
+      .eye:nth-of-type(5){
+        transform-origin: 838.65px  ;
+      }
+
+      .eye:nth-of-type(6){
+        transform-origin: 1081.35px;
+      }
+
+      @keyframes bounce {
+        from {transform: scale(0.7);}
+        
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <svg
+      data-name="레이어 1"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 1920 1080"
+    >
+      <path
+        d="M960 863a310 310 0 1 1 219.2-90.8A308 308 0 0 1 960 863Z"
+        style="fill: #fff"
+      />
+      <path
+        d="M960 263a288.92 288.92 0 1 1-112.87 22.77A288.17 288.17 0 0 1 960 263m0-40c-182.25 0-330 147.75-330 330s147.75 330 330 330 330-147.75 330-330-147.75-330-330-330Z"
+      />
+      <path
+        d="M1164.42 678.82a240.07 240.07 0 0 1-405.28 5.59"
+        style="
+          fill: #fff;
+          stroke: #000;
+          stroke-miterlimit: 10;
+          stroke-width: 30px;
+        "
+      />
+      <path
+        d="M838.65 514.65A12.65 12.65 0 1 1 851.3 502a12.66 12.66 0 0 1-12.65 12.65Z"
+        style="fill: #fff"
+      />
+      <path
+       class="eye"
+        d="M838.65 469.35A32.65 32.65 0 1 0 871.3 502a32.65 32.65 0 0 0-32.65-32.65Z"
+      />
+      <circle cx="1081.35" cy="502" r="12.65" style="fill: #fff" />
+      <path
+      class="eye"
+        d="M1081.35 469.35A32.65 32.65 0 1 0 1114 502a32.65 32.65 0 0 0-32.65-32.65Z"
+      />
+      <ellipse cx="945.5" cy="251" rx="162.26" ry="130" />
+      <ellipse cx="1096" cy="273" rx="150" ry="120" />
+      <ellipse cx="1001" cy="231.5" rx="130" ry="102.5" />
+      <ellipse cx="886" cy="231" rx="150" ry="120" />
+      <ellipse cx="796" cy="281" rx="150" ry="120" />
+    </svg>
+  </body>
+</html>

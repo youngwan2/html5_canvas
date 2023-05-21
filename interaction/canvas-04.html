@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interaction</title>
+    <style>
+      * {
+        margin: 0;
+      }
+      .canvas {
+        background-color: #eee;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Interaction</h1>
+    <canvas width="600" height="400" class="canvas"></canvas>
+
+    <script>
+      // 1 에서 만든 박스를 여러 개를 랜덤으로 배치하고, 해당 박스가 제대로
+      // 클릭이 되었는지 확인하는 것을 만들어볼 예정
+      const canvas = document.querySelector(".canvas");
+      const context = canvas.getContext("2d");
+      // font ='굵기 사이즈 글씨체'
+      context.font = "bold 20px sans-serif";
+
+      // 클릭 이벤트 리스너 등록 시 각 박스의 위치값을 저장하기 위한 장소
+      const boxes = [];
+
+      // 쓰기 나름이겠지만 마우스 위치값을 객체로 만들어두면 재사용이 편리함
+      const mousePosit = {
+        x: 0,
+        y: 0,
+      };
+
+      class Box {
+        constructor(index, x, y) {
+          this.x = x;
+          this.y = y;
+          this.index = index;
+          this.draw();
+        }
+
+        // 실제로 그려주는 함수
+        draw() {
+          context.fillStyle = "rgb(0,0,0,0.5)"; // 투명도 조절
+          context.fillRect(this.x, this.y, 100, 100);
+          context.fillStyle = "white";
+          //context.fillTex(텍스트, x축,y축,텍스트 넓이)
+          context.fillText(this.index, this.x + 50, this.y + 50, 300);
+        }
+      }
+      // new Box(x,y) 를 입력할 때 마다 박스 하나 씩 랜덤 생성토록 함.
+
+      // 애니메이션 그리는 함수
+      function render() {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (let i = 0; i < boxes.length; i++) {
+          boxes[i].x += 1;
+          boxes[i].draw();
+
+          // 클래스 박스의 x축 크기가 캔버스 넓이보다 커지면 초기화
+          if (boxes[i].x > canvas.width) {
+            boxes[i].x = -100;
+          }
+        }
+        requestAnimationFrame(render);
+      }
+      render();
+
+      let [ranX, ranY] = [0, 0]; //랜덤 값 저장
+      for (let i = 0; i < 14; i++) {
+        ranX = Math.random() * canvas.width * 0.8; //총 600중 0~480
+        ranY = Math.random() * canvas.height * 0.8; //총 400 중 0~320
+        boxes.push(new Box(i, ranX, ranY)); // 생성된 클래스들을 배열에 추가
+      }
+
+      canvas.addEventListener("click", (e) => {
+        mousePosit.x = e.layerX - canvas.offsetLeft;
+        mousePosit.y = e.layerY - canvas.offsetTop;
+        console.log(`x축:`, mousePosit.x, `y축:`, mousePosit.y);
+
+        // 박스 배열에 저장된 각 박스의 x,y 값을 기준으로 클릭 이벤트 발생 시점을 설정
+        boxes.forEach((box) => {
+          if (
+            mousePosit.x > box.x &&
+            mousePosit.x < box.x + 100 &&
+            mousePosit.y > box.y &&
+            mousePosit.y < box.y + 100
+          ) {
+            console.log(
+              `box 인덱스:`,
+              box.index,
+              `박스x축:`,
+              box.x,
+              `박스y축:`,
+              box.y
+            );
+          }
+        });
+      });
+    </script>
+    <br /><br />
+    <h2>소스코드</h2>
+    <pre><p>
+      // 1 에서 만든 박스를 여러 개를 랜덤으로 배치하고, 해당 박스가 제대로
+      // 클릭이 되었는지 확인하는 것을 만들어볼 예정
+      const canvas = document.querySelector(".canvas");
+      const context = canvas.getContext("2d");
+      // font ='굵기 사이즈 글씨체'
+      context.font = "bold 20px sans-serif";
+
+      // 클릭 이벤트 리스너 등록 시 각 박스의 위치값을 저장하기 위한 장소
+      const boxes = [];
+
+      // 쓰기 나름이겠지만 마우스 위치값을 객체로 만들어두면 재사용이 편리함
+        const mousePosit={
+          x:0,
+          y:0
+        }
+     
+
+      class Box {
+        constructor(index, x, y) {
+          this.x = x;
+          this.y = y;
+          this.index = index;
+          this.draw();
+        }
+
+        // 실제로 그려주는 함수
+        draw() {
+          
+          context.fillStyle = "rgb(0,0,0,0.5)"; // 투명도 조절
+          context.fillRect(this.x, this.y, 100, 100);
+          context.fillStyle = "white";
+          //context.fillTex(텍스트, x축,y축,텍스트 넓이)
+          context.fillText(this.index, this.x + 50, this.y + 50, 300);
+        }
+      }
+      // new Box(x,y) 를 입력할 때 마다 박스 하나 씩 랜덤 생성토록 함.
+
+      // 애니메이션 그리는 함수
+      function render() {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        
+        for (let i = 0; i < boxes.length; i++) {
+          boxes[i].x+=1
+          boxes[i].draw()
+        }
+        requestAnimationFrame(render);
+      }
+      render()
+
+      let [ranX, ranY] = [0, 0]; //랜덤 값 저장
+      for (let i = 0; i < 5; i++) {
+        ranX = Math.random() * canvas.width * 0.8; //총 600중 0~480
+        ranY = Math.random() * canvas.height * 0.8; //총 400 중 0~320
+        boxes.push(new Box(i, ranX, ranY)); // 생성된 클래스들을 배열에 추가
+      }
+
+      canvas.addEventListener("click", (e) => {
+        mousePosit.x = e.layerX - canvas.offsetLeft;
+        mousePosit.y = e.layerY - canvas.offsetTop;
+        console.log(`x축:`, mousePosit.x, `y축:`, mousePosit.y);
+
+        // 박스 배열에 저장된 각 박스의 x,y 값을 기준으로 클릭 이벤트 발생 시점을 설정
+        boxes.forEach((box) => {
+          if (mousePosit.x > box.x && mousePosit.x < box.x + 100 && mousePosit.y > box.y && mousePosit.y < box.y + 100) {
+            console.log(
+              `box 인덱스:`,
+              box.index,
+              `박스x축:`,
+              box.x,
+              `박스y축:`,
+              box.y
+            );
+          }
+        });
+      });
+    </p></pre>
+  </body>
+</html>
