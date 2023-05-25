@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>10. text 태그를 사용하여 글자적기</title>
+    <style>
+        *{
+          margin: 0;
+        }
+        .shapes{
+            width: 100%;
+            height: 100%;
+            background-color: gray;
+        }
+
+        .liner{
+          /* 직선의 양쪽 끝점 부분의 모양을 결정한다.. */
+          stroke-linecap: round;
+          stroke-linecap: butt; /*기본값*/
+          stroke-linecap: square; /*사각형*/
+
+          /* 직선과 직선이 만나는 지점의 모양을 결정한다. */
+          stroke-linejoin:miter; /*기본값*/
+          stroke-linejoin: bevel; /*약간 깍는다.*/
+          stroke-linejoin: round; /*라운드 처리.*/
+        }
+
+        text{
+          fill: black;
+          font-size: 14px;
+          font-family: 'Courier New', Courier, monospace;
+          text-shadow: 5px 5px 5px black;
+        }
+    </style>
+  </head>
+  <body>
+    <svg class="shapes">
+      <text x="60"  y="30">글자가 적히나요!</text>
+    </svg>
+  </body>
+</html>

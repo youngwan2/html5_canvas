@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>8. path로 그리기</title>
+    <style>
+        .shapes{
+            width: 600px;
+            height: 400px;
+            background-color: gray;
+        }
+    </style>
+  </head>
+  <body>
+    <svg class="shapes">
+        <!-- M : 시작점
+             L : 직선으로 x y 를 받는다. 
+             H : 무조건 수평으로 그린다. x 값만 받는다.
+             V : 무조건 수직으로 그린다. y 값만 받는다.-->
+      <path 
+      d="M 300 200 L 150 100 H 300 V 200" 
+      fill="" 
+      stroke="red" 
+      stroke-width="" />
+      <path
+            d ="M 400 300 L 300 200"/>
+   
+    </svg>
+  </body>
+</html>
