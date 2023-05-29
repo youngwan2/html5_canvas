@@ -11,6 +11,12 @@
             .hair{
                 fill:url('#hair-color')
             }
+
+            .right_eye:hover{
+                fill: red;
+            }
+
+          
             </style>
     </defs>
 
@@ -24,10 +30,10 @@
     <path d="M838.65,514.65A12.65,12.65,0,1,1,851.3,502,12.66,12.66,0,0,1,838.65,514.65Z"
         transform="translate(-630 -111)" style="fill:#fff" />
     <path d="M838.65,469.35A32.65,32.65,0,1,0,871.3,502a32.65,32.65,0,0,0-32.65-32.65Z"
-        transform="translate(-630 -111)" />
+        transform="translate(-630 -111)" class="left_eye"/>
     <circle cx="451.35" cy="391" r="12.65" style="fill:#fff" />
     <path d="M1081.35,469.35A32.65,32.65,0,1,0,1114,502a32.65,32.65,0,0,0-32.65-32.65Z"
-        transform="translate(-630 -111)" />
+        transform="translate(-630 -111)" class="right_eye" />
     <ellipse class="hair" cx="315.5" cy="140" rx="162.26" ry="130" />
     <ellipse class="hair" cx="466" cy="162" rx="150" ry="120" />
     <ellipse class="hair" cx="371" cy="120.5" rx="130" ry="102.5" />
