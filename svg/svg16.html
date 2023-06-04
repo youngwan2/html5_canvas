@@ -15,7 +15,6 @@
         transform: translate(-50%, -50%);
         background-color: rgb(159, 160, 160);
       }
-
       .svg text {
         font-size: 5rem;
       }
@@ -24,15 +23,27 @@
   <body>
     <svg class="svg">
       <defs>
-        <mask id="mask-circle" >
+        <mask id="mask-rect" >
           <!-- 마스크 영역은 흰색이어야 보인다 -->
-          <circle class="circle" cx="50" cy="50" r="40" fill="white" />
+          <rect id="rect" x="50" y="0" width="200" height="100" fill="white" />
         </mask>
       </defs>
-      <g mask="url(#mask-circle)">
+      <g mask="url(#mask-rect)">
         <text x="10" y="100">Hello SVG1 Hello SVG1 Hello SVG1 Hello SVG1</text>
       </g>
     </svg>
+    <script>
+      const maskRect = document.getElementById('rect')
+      let x =0
+      
+      function draw(x){
+        x *= 0.1
+        if(x>window.innerWidth-500) return;
+        maskRect.setAttribute('x',x)
+        requestAnimationFrame(draw)
+      }
 
+      draw(x)
+    </script>
   </body>
 </html>
