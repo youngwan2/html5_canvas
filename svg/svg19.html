@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>18. Stroke 애니메이션</title>
+
+    <style>
+      circle {
+        stroke-width: 10;
+        fill: transparent;
+        stroke: black;
+
+        /* 이어지는 선(점선)의 각각 길이를 설정한다. */
+        /*어레이와 오프셋이 모두 700이면 화면에 안 보임 */
+        stroke-dasharray:700; 
+
+        /* dasharray의 위치를 지정한다. */
+        /* 오프셋을 700에서 줄여나가면 점차 선이 그어지는 효과가 나옴 */
+        stroke-dashoffset:0;
+        animation: 10s infinite linear render alternate; 
+      }
+
+    @keyframes render {
+      from {stroke-dashoffset: 700;}
+
+    }
+
+    .path{
+      stroke-dasharray: 940;
+      stroke-dashoffset: 0;
+      animation: 10s infinite linear render2 alternate; 
+    }
+
+    @keyframes render2 {
+      from { stroke-dashoffset: 940;}
+    }
+
+      
+    </style>
+  </head>
+  <body>
+    <svg viewBox="0 0 800 500">
+      <circle cx="400" cy="250" r="100" />
+      <path class="path" d="M0 0 C300 400, 500 300, 400 400, 500 500, 600 400, 700 500 "
+         fill="transparent" stroke="red" stroke-width="3" />
+    </svg>
+
+    <script>
+      const path = document.querySelector('.path')
+      console.log(path.getTotalLength())
+
+
+    </script>
+  </body>
+</html>
